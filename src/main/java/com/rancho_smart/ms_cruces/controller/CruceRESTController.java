@@ -38,6 +38,26 @@ public class CruceRESTController {
                     .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/finca/{idFinca}")
+    public ResponseEntity<List<Cruce>> getCrucesByIdFinca(@PathVariable Long idFinca){
+        List<Cruce> crucesFinca = this.cruceService.getCrucesByIdFinca(idFinca);
+        if(crucesFinca.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(crucesFinca, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/usuario/{idUsuario}")
+    public ResponseEntity<List<Cruce>> getCrucesByIdUsuario(@PathVariable Long idUsuario){
+        List<Cruce> crucesUsuario = this.cruceService.getCrucesByIdUsuario(idUsuario);
+        if(crucesUsuario.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(crucesUsuario, HttpStatus.OK);
+        }
+    }
+
     @PostMapping
     public ResponseEntity<Cruce> saveCruce(@RequestBody Cruce cruce) {
         Cruce cruceCreado = this.cruceService.saveCruce(cruce);

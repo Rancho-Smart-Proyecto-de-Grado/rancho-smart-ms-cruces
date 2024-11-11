@@ -12,11 +12,11 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "CRUCE")
 public class Cruce {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCruce;
-    
+
     @Column(name = "ID_MADRE")
     private Long idMadre;
 
@@ -38,8 +38,17 @@ public class Cruce {
     @Column(name = "CALIFICACION")
     private int calificacion;
 
+    @Column(name = "ID_USUARIO")
+    private Long idUsuario;
+
+    @Column(name = "ID_FINCA")
+    private Long idFinca;
+
+    public Cruce() {
+    }
+
     public Cruce(Long idMadre, Long idPadre, String padre, LocalDateTime fecha, boolean exito, boolean ejecutado,
-            int calificacion) {
+            int calificacion, Long idUsuario, Long idFinca) {
         this.idMadre = idMadre;
         this.idPadre = idPadre;
         this.padre = padre;
@@ -47,9 +56,24 @@ public class Cruce {
         this.exito = exito;
         this.ejecutado = ejecutado;
         this.calificacion = calificacion;
+        this.idUsuario = idUsuario;
+        this.idFinca = idFinca;
     }
 
-    public Cruce() {
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Long getIdFinca() {
+        return idFinca;
+    }
+
+    public void setIdFinca(Long idFinca) {
+        this.idFinca = idFinca;
     }
 
     public Long getIdCruce() {
@@ -84,7 +108,7 @@ public class Cruce {
         this.padre = padre;
     }
 
-   public boolean isExito() {
+    public boolean isExito() {
         return exito;
     }
 

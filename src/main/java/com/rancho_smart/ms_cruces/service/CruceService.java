@@ -19,6 +19,14 @@ public class CruceService {
         return this.cruceRepository.findAll();
     }
 
+    public List<Cruce> getCrucesByIdFinca(Long idFinca){
+        return this.cruceRepository.findByIdFinca(idFinca);
+    }
+
+    public List<Cruce> getCrucesByIdUsuario(Long idUsuario){
+        return this.cruceRepository.findByIdUsuario(idUsuario);
+    }
+
     public Optional<Cruce> getCruceById(Long id) {
         return this.cruceRepository.findById(id);
     }
